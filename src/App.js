@@ -1,12 +1,25 @@
-import React from 'react'
-import Routes from './routes'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import muiTheme from './styles/theme'
+import Navigation from './components/ui/Navigation'
 
-class App extends React.Component {
+class App extends Component {
+  static childContextTypes = {
+    muiTheme: PropTypes.object.isRequired,
+  }
+
+  getChildContext() {
+    return { muiTheme }
+  }
+
   render() {
     return (
-      <div>
-        <Routes />
-      </div>
+      <MuiThemeProvider muiTheme={muiTheme}>
+        <div className="App">
+          <Navigation />
+        </div>
+      </MuiThemeProvider>
     )
   }
 }
