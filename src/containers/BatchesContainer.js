@@ -3,7 +3,6 @@ import { fetchBatches } from '../actions/batches'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import {GridList, GridTile} from 'material-ui/GridList';
-import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
 import SignIn from './SignIn'
 import PropTypes from 'prop-types'
@@ -16,7 +15,7 @@ const styles = {
     justifyContent: 'space-around',
   },
   gridList: {
-    width: 500,
+    width: 800,
     height: 450,
     overflowY: 'auto',
   },
@@ -37,7 +36,6 @@ class BatchesContainer extends PureComponent {
 
     return(
       <div style={styles.root}>
-      <BatchForm />
         <GridList
          cellHeight={180}
          style={styles.gridList}
@@ -46,13 +44,14 @@ class BatchesContainer extends PureComponent {
      {this.props.batches.map((batch) => (
        <GridTile
          key={batch._id}
-         title={batch.batchNumber}
-         subtitle={<span>{batch.startDate}</span>}
+         title= {"Batch  #" + batch.batchNumber}
+         subtitle={<span>{batch.startDate + " ~ " + batch.endDate}</span>}
          onClick={this.goToBatch(batch._id)}
         >
        </GridTile>
      ))}
    </GridList>
+   <BatchForm />
  </div>
     )
   }

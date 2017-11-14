@@ -6,6 +6,7 @@ import {GridList, GridTile} from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
+import StudentForm from './StudentForm'
 
 const styles = {
   root: {
@@ -14,7 +15,7 @@ const styles = {
     justifyContent: 'space-around',
   },
   gridList: {
-    width: 500,
+    width: 600,
     height: 450,
     overflowY: 'auto',
   },
@@ -28,7 +29,7 @@ const studentShape = PropTypes.shape({
 
 class Batch extends PureComponent {
   static propTypes = {
-    fetchOnebatch: PropTypes.func.isRequired,
+    fetchOneBatch: PropTypes.func.isRequired,
     batch: PropTypes.shape({
       batchNumber: PropTypes.number,
       students: PropTypes.arrayOf(studentShape),
@@ -49,6 +50,7 @@ class Batch extends PureComponent {
 
   render() {
     const { batch } = this.props
+    if (!batch) return null
     return(
       <div style={styles.root}>
         <GridList
@@ -62,10 +64,11 @@ class Batch extends PureComponent {
               title={student.name}
               actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
             >
-              <img src={student.photo} />
+              <img src={student.photo} alt="student"/>
       </GridTile>
     ))}
   </GridList>
+  <StudentForm batchId= { batch._id}/>
 </div>
     )
   }
