@@ -5,6 +5,7 @@ import {
   BatchesContainer,
   SignIn,
   SignUp,
+  Batch,
 } from './containers'
 
 export default class Routes extends Component {
@@ -12,6 +13,7 @@ export default class Routes extends Component {
     return (
       <div>
        <Route exact path="/"  component={BatchesContainer} />
+       <Route path="/batches/:batchId" component={Batch} />
        <Route path="/sign-in" component={SignIn} />
        <Route path="/sign-up" component={SignUp} />
       </div>

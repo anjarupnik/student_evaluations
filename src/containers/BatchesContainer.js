@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import { fetchBatches } from '../actions/batches'
 import { connect } from 'react-redux'
+import { push } from 'react-router-redux'
 import {GridList, GridTile} from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
@@ -29,6 +30,8 @@ class BatchesContainer extends PureComponent {
     this.props.fetchBatches()
   }
 
+ goToBatch = batchId => event => this.props.push(`/batches/${batchId}`)
+
   render() {
     if (!this.props.signedIn) return <SignIn />
 
@@ -45,6 +48,7 @@ class BatchesContainer extends PureComponent {
          key={batch._id}
          title={batch.batchNumber}
          subtitle={<span>{batch.startDate}</span>}
+         onClick={this.goToBatch(batch._id)}
         >
        </GridTile>
      ))}
@@ -55,6 +59,6 @@ class BatchesContainer extends PureComponent {
 }
 
 const mapStateToProps = ({ batches, currentUser }) => ({ batches, signedIn: !!currentUser && !!currentUser._id, })
-const mapDispatchToProps = { fetchBatches }
+const mapDispatchToProps = { fetchBatches, push }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BatchesContainer)
