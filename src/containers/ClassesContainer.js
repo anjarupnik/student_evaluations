@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react'
 import { fetchClasses } from '../actions/classes'
 import { connect } from 'react-redux'
-import Title from '../components/ui/Title'
 import {GridList, GridTile} from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
@@ -21,7 +20,7 @@ const styles = {
   },
 };
 
-export class ClassesContainer extends PureComponent {
+class ClassesContainer extends PureComponent {
   static propTypes = {
   signedIn: PropTypes.bool,
 }
