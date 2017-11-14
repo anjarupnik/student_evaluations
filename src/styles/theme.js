@@ -17,7 +17,7 @@ export const palette = {
   primary3Color: green,
   accent1Color: green,
   textColor: black,
-  alternateTextColor: indigo,
+  alternateTextColor: black,
   canvasColor: white,
   borderColor: grey,
   disabledColor: grey30
