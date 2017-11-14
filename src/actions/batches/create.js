@@ -1,28 +1,29 @@
+import API from '../../api/client'
 import {
   APP_LOADING,
   APP_DONE_LOADING,
   LOAD_ERROR,
   LOAD_SUCCESS
 } from '../loading'
-import API from '../../api/client'
-export const FETCHED_CLASSES = 'FETCHED_CLASSES'
+export const CREATE_BATCH = 'CREATE_BATCH'
 
 const api = new API()
 
-export default () => {
+export default (batch) => {
   return dispatch => {
     dispatch({ type: APP_LOADING })
 
-  api.get('/batches')
+  api.post('/batches', batch)
     .then((result) => {
       dispatch({ type: APP_DONE_LOADING })
       dispatch({ type: LOAD_SUCCESS })
 
       dispatch({
-        type: FETCHED_CLASSES,
+        type: CREATE_BATCH,
         payload: result.body
       })
     })
+
     .catch((error) => {
       dispatch({ type: APP_DONE_LOADING })
       dispatch({

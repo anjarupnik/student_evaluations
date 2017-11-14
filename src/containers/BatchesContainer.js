@@ -1,11 +1,12 @@
 import React, { PureComponent } from 'react'
-import { fetchClasses } from '../actions/classes'
+import { fetchBatches } from '../actions/batches'
 import { connect } from 'react-redux'
 import {GridList, GridTile} from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
 import SignIn from './SignIn'
 import PropTypes from 'prop-types'
+import BatchForm from './BatchForm'
 
 const styles = {
   root: {
@@ -20,12 +21,12 @@ const styles = {
   },
 };
 
-class ClassesContainer extends PureComponent {
+class BatchesContainer extends PureComponent {
   static propTypes = {
   signedIn: PropTypes.bool,
 }
   componentWillMount() {
-    this.props.fetchClasses()
+    this.props.fetchBatches()
   }
 
   render() {
@@ -33,6 +34,7 @@ class ClassesContainer extends PureComponent {
 
     return(
       <div style={styles.root}>
+      <BatchForm />
         <GridList
          cellHeight={180}
          style={styles.gridList}
@@ -53,6 +55,6 @@ class ClassesContainer extends PureComponent {
 }
 
 const mapStateToProps = ({ batches, currentUser }) => ({ batches, signedIn: !!currentUser && !!currentUser._id, })
-const mapDispatchToProps = { fetchClasses }
+const mapDispatchToProps = { fetchBatches }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ClassesContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(BatchesContainer)

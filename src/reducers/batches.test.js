@@ -1,8 +1,8 @@
 import { expect } from 'chai'
-import classes from './classes'
-import { FETCHED_CLASSES } from '../actions/classes/fetch'
+import batches from './batches'
+import { FETCHED_BATCHES} from '../actions/batches/fetch'
 
-describe('classes reducer', () => {
+describe('batches reducer', () => {
   const reducer = classes
   const initialState = []
 
@@ -10,11 +10,11 @@ describe('classes reducer', () => {
     expect(reducer()).to.eql(initialState)
   })
 
-  it(FETCHED_CLASSES, () => {
+  it(FETCHED_BATCHES, () => {
   const eventualState = ['1', '2', '3', '4']
 
   const fetchAction = {
-    type: FETCHED_CLASSES,
+    type: FETCHED_BATCHES,
     payload: eventualState
   }
 

@@ -1,9 +1,9 @@
 import SignIn from './SignIn'
 import SignUp from './SignUp'
-import ClassesContainer from './ClassesContainer'
+import BatchesContainer from './BatchesContainer'
 
 export {
   SignIn,
   SignUp,
-  ClassesContainer,
+  BatchesContainer,
 }
