@@ -1,0 +1,29 @@
+div.green {
+  height: 30px;
+  width: 30px;
+  border: 1 solid black;
+  background-color: green;
+}
+
+div.yellow {
+  height: 30px;
+  width: 30px;
+  border: 1 solid black;
+  background-color: yellow;
+}
+
+div.red {
+  height: 30px;
+  width: 30px;
+  border: 1 solid black;
+  background-color: red;
+}
+
+div.colors {
+  display: flex;
+}
+
+.studentpage {
+  display: flex;
+  justify-content: space-around;
+}
