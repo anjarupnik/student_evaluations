@@ -32,17 +32,19 @@ class StudentForm extends PureComponent {
       const student = {
         name: this.refs.name.getValue(),
         photo: this.refs.photo.getValue(),
-        batchId: batchId
+        batchId: batchId,
+        evaluations: [{}],
       }
       this.props.createStudent(student, batchId)
-  }
+      this.refs.form.reset()
+    }
 
   render() {
     return (
       <Paper style={ dialogStyle }>
         <Title content="Add New Student" level={2} />
 
-        <form onSubmit={this.submitForm.bind(this)}>
+        <form onSubmit={this.submitForm.bind(this)} ref="form">
           <div className="input">
             <h4>Full name: </h4>
             <TextField ref="name" type="text" placeholder="Student Name" />
@@ -50,7 +52,7 @@ class StudentForm extends PureComponent {
           <div className="input">
             <h4>Photo: </h4>
             <TextField ref="photo" type="text" placeholder='url' />
-          </div>
+         </div>
         </form>
         <RaisedButton
           style={ buttonStyle }
