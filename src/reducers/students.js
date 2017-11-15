@@ -1,4 +1,4 @@
-import { FETCHED_ONE_STUDENT, RATE_STUDENT } from '../actions/students'
+import { FETCHED_ONE_STUDENT, RATE_STUDENT, UPDATE_STUDENT } from '../actions/students'
 import { FETCHED_ONE_BATCH } from '../actions/batches'
 
 export default (state = [], { type, payload } = {}) => {
@@ -7,6 +7,7 @@ export default (state = [], { type, payload } = {}) => {
      case FETCHED_ONE_BATCH:
         return [...payload.students]
 
+      case UPDATE_STUDENT:
       case RATE_STUDENT :
         return state.map((student) => {
           if (student._id === payload._id) {

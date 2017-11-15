@@ -6,10 +6,11 @@ import Title from '../components/ui/Title'
 import Paper from 'material-ui/Paper'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
+import FlatButton from 'material-ui/FlatButton'
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
-import FlatButton from 'material-ui/FlatButton'
 import { push } from 'react-router-redux'
+import './RateForm.css'
 
 const dialogStyle = {
   width: '400px',
@@ -27,39 +28,42 @@ const buttonStyle = {
 class RateForm extends PureComponent {
   static propTypes = {
     rateStudent: PropTypes.func.isRequired,
-    studentId: PropTypes.string
+    studentId: PropTypes.string,
+    color: PropTypes.string
   }
 
-  state = {controlledDate: null}
+  state = {}
 
   submitForm(event) {
     event.preventDefault()
-      const { studentId } = this.props
+      const { studentId, batchId } = this.props
       const evaluation = {
         color: this.state.value,
         date: this.refs.date.getValue(),
-        remark: this.refs.date.getValue()
+        remark: this.refs.remark.getValue()
       }
-      this.props.rateStudent(evaluation, studentId)
-      this.refs.form.reset()
+      this.props.rateStudent(evaluation, studentId, batchId)
+      this.props.push(`/batches/${batchId}`)
     }
 
     submitNext(event) {
       event.preventDefault()
         const { studentId } = this.props
-        const evaluation = {
+         const evaluation = {
           color: this.state.value,
           date: this.refs.date.getValue(),
-          remark: this.refs.date.getValue()
+          remark: this.refs.remark.getValue()
         }
+        console.log(this.state.value)
         this.props.rateStudent(evaluation, studentId)
         this.props.push(`/students/${studentId}`)
       }
 
 
-   handleChange = (event, index, value) => {
-     this.setState({value})
-     }
+
+  handleChange = (event, index, value) => {
+    this.setState({value})
+    }
 
   render() {
     return (
@@ -67,16 +71,17 @@ class RateForm extends PureComponent {
         <Title content="Rate Student" level={2} />
 
         <form onSubmit={this.submitForm.bind(this)} ref="form">
-          <div className="input">
-            <DropDownMenu ref="color" value={this.state.value} onChange={this.handleChange}>
-                 <MenuItem value={"green"} primaryText="Green" />
-                 <MenuItem value={"yellow"} primaryText="Yellow" />
-                 <MenuItem value={"red"} primaryText="Red" />
-           </DropDownMenu>
-          </div>
+        <div className="input">
+          <DropDownMenu ref="color" value={this.state.value} onChange={this.handleChange}>
+               <MenuItem value={"green"} primaryText="Green" />
+               <MenuItem value={"yellow"} primaryText="Yellow" />
+               <MenuItem value={"red"} primaryText="Red" />
+         </DropDownMenu>
+        </div>
+
           <div className="input">
             <h4>Date: </h4>
-            <TextField ref="date" type="date" placeholder='Date' />
+            <TextField ref="date" type="date" placeholder='Date' defaultValue={new Date().toISOString().substr(0, 10)} />
          </div>
         <div className="input">
           <h4>Remarks: </h4>

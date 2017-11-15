@@ -3,10 +3,10 @@ import { connect } from 'react-redux'
 import { fetchOneStudent } from '../actions/students'
 import RateForm from './RateForm'
 import './RateStudent.css'
-import Drawer from 'material-ui/Drawer';
 import RaisedButton from 'material-ui/RaisedButton';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
+import { push } from 'react-router-redux'
 
 const containerStyle = {
   width: '470px',
@@ -24,6 +24,8 @@ class RateStudent extends PureComponent {
 
   }
 
+  editStudent = studentId => event => this.props.push(`/students/${studentId}/edit`)
+
   render() {
     const { student } = this.props
      if (!student) return null
@@ -37,16 +39,15 @@ class RateStudent extends PureComponent {
            {student.evaluations.map(e =>
             <div className={e.color}></div>)}
         </div>
-
           <img src={student.photo} alt="student" />
             </CardMedia>
             <CardActions>
-              <FlatButton label="Edit" />
+              <FlatButton label="Edit" onClick={this.editStudent(student._id)} />
               <FlatButton label="Delete" />
             </CardActions>
         </Card>
         <div>
-          <RateForm studentId={student._id}/>
+          <RateForm studentId={student._id} batchId={student.batchId}/>
         </div>
        </div>
     )
@@ -61,4 +62,4 @@ const mapStateToProps = ({ students }, { match }) => {
   }
 }
 
-  export default connect(mapStateToProps, { fetchOneStudent })(RateStudent)
+  export default connect(mapStateToProps, { fetchOneStudent, push })(RateStudent)
