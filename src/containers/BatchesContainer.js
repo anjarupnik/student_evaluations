@@ -17,7 +17,6 @@ const styles = {
   gridList: {
     width: 800,
     height: 450,
-    overflowY: 'auto',
   },
 };
 
@@ -37,7 +36,7 @@ class BatchesContainer extends PureComponent {
     return(
       <div style={styles.root}>
         <GridList
-         cellHeight={180}
+         cellHeight={100}
          style={styles.gridList}
         >
      <Subheader>All Classes</Subheader>

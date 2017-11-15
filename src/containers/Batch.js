@@ -3,22 +3,21 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { fetchOneBatch } from '../actions/batches/fetch'
 import {GridList, GridTile} from 'material-ui/GridList';
-import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
-import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 import StudentForm from './StudentForm'
 import { push } from 'react-router-redux'
+import Title from '../components/ui/Title'
 
 const styles = {
   root: {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
+    marginLeft: '0px',
   },
   gridList: {
     width: 600,
     height: 450,
-    overflowY: 'auto',
   },
 };
 
@@ -43,7 +42,6 @@ class Batch extends PureComponent {
   }
 
   componentWillMount() {
-    const { batch, fetchOneBatch } = this.props
     const { batchId } = this.props.match.params
 
    this.props.fetchOneBatch(batchId)
@@ -57,22 +55,26 @@ class Batch extends PureComponent {
     if (!batch) return null
     return(
       <div style={styles.root}>
+      <div>
+        <Title content= {"Batch # " + batch.batchNumber} />
+          <StudentForm batchId= { batch._id}/>
+      </div>
         <GridList
           cellHeight={180}
           style={styles.gridList}
         >
-          <Subheader>Batch #{batch.batchNumber}</Subheader>
-          {batch.students.map((student) => (
+         {batch.students.map((student) => (
             <GridTile
               key={student._id}
               title={student.name}
-              actionIcon={<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle fill="#7FFF00" cx="12" cy="12" r="8"/></svg>}
+              actionIcon={<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+               <circle fill={student.evaluations[student.evaluations.length-1].color} cx="12" cy="12" r="8"/></svg>}
             >
               <img src={student.photo} alt="student"  onClick={this.goToStudent(student._id)}/>
-      </GridTile>
+        </GridTile>
     ))}
   </GridList>
-  <StudentForm batchId= { batch._id}/>
+
 </div>
     )
   }

@@ -1,38 +1,53 @@
 import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { fetchOneStudent } from '../actions/students'
+import RateForm from './RateForm'
+import './RateStudent.css'
+import Drawer from 'material-ui/Drawer';
+import RaisedButton from 'material-ui/RaisedButton';
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import FlatButton from 'material-ui/FlatButton';
 
-const evaluationShape = PropTypes.shape({
-  color: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-  remark: PropTypes.string.isRequired
-})
+const containerStyle = {
+  width: '470px',
+  margin: '20px',
+  padding: '2rem',
+}
 
 class RateStudent extends PureComponent {
-  static propTypes = {
-    fetchOneStudent: PropTypes.func.isRequired,
-    name: PropTypes.string.isRequired,
-    photo: PropTypes.string.isRequired,
-    batchId: PropTypes.string.isRequired,
-    evaluations: PropTypes.arrayOf(evaluationShape)
-  }
 
   componentWillMount() {
     const { student, fetchOneStudent } = this.props
     const { studentId } = this.props.match.params
 
-     this.props.fetchOneStudent(studentId)
+    if (!student) { fetchOneStudent(studentId) }
 
   }
 
   render() {
     const { student } = this.props
-
+     if (!student) return null
     return(
-      <div>
-        <img src={student.photo} alt="student"/>
-        <h4>{student.name}</h4>
+      <div className="studentpage">
+        <Card style={containerStyle}>
+        <CardMedia
+          overlay={<CardTitle title={student.name}/>}
+          >
+        <div className="colors">
+           {student.evaluations.map(e =>
+            <div className={e.color}></div>)}
+        </div>
+
+          <img src={student.photo} alt="student" />
+            </CardMedia>
+            <CardActions>
+              <FlatButton label="Edit" />
+              <FlatButton label="Delete" />
+            </CardActions>
+        </Card>
+        <div>
+          <RateForm studentId={student._id}/>
+        </div>
        </div>
     )
   }
