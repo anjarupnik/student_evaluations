@@ -44,7 +44,7 @@ class Batch extends PureComponent {
     const { batch, fetchOneBatch } = this.props
     const { batchId } = this.props.match.params
 
-    if (!batch) { fetchOneBatch(batchId) }
+   this.props.fetchOneBatch(batchId)
 
   }
 
@@ -60,7 +60,7 @@ class Batch extends PureComponent {
           <Subheader>Batch #{batch.batchNumber}</Subheader>
           {batch.students.map((student) => (
             <GridTile
-              key={student.id}
+              key={student._id}
               title={student.name}
               actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
             >
