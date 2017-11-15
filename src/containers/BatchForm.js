@@ -34,14 +34,14 @@ class BatchForm extends PureComponent {
       }
       this.props.createBatch(batch)
       this.refs.form.reset()
-  }
+    }
 
   render() {
     return (
       <Paper style={ dialogStyle }>
         <Title content="Add New Batch" level={2} />
 
-        <form onSubmit={this.submitForm.bind(this)} refs="form">
+        <form onSubmit={this.submitForm.bind(this)} ref="form">
           <div className="input">
             <h4>Batch number: </h4>
             <TextField ref="batchNumber" type="number" placeholder="#" />
