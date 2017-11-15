@@ -1,0 +1,27 @@
+div.green1 {
+  height: 40px;
+  width: 40px;
+  border: 1 solid black;
+  background-color: green;
+  margin-right: 10px;
+}
+
+div.yellow1 {
+  height: 40px;
+  width: 40px;
+  border: 1 solid black;
+  background-color: yellow;
+  margin-right: 10px;
+}
+
+div.red1 {
+  height: 40px;
+  width: 40px;
+  border: 1 solid black;
+  background-color: red;
+}
+
+div.colors {
+  display: flex;
+
+}
