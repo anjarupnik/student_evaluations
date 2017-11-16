@@ -31,7 +31,7 @@ const studentShape = PropTypes.shape({
   batchId: PropTypes.string.isRequired
 })
 
-class Batch extends PureComponent {
+export class Batch extends PureComponent {
   static propTypes = {
     fetchOneBatch: PropTypes.func.isRequired,
     batch: PropTypes.shape({
@@ -67,20 +67,24 @@ class Batch extends PureComponent {
         <PercentageBar batch={batch}/>
       <div>
       </div>
-        <GridList
-          cellHeight={180}
-          style={styles.gridList}
-        >
-         {batch.students.map((student) => (
-            <GridTile
-              cols='1'
-              key={student._id}
-              title={student.name}
-              onClick={this.goToStudent(student._id)}
-              actionIcon={<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-               <circle fill={student.evaluations[student.evaluations.length-1].color} cx="12" cy="12" r="8"/></svg>}
-            >
-              <img className="studentImage" src={student.photo} alt="student"  onClick={this.goToStudent(student._id)}/>
+      <GridList
+        cellHeight={180}
+        style={styles.gridList}
+      >
+      {batch.students.map((student) => (
+        <GridTile
+          cols='1'
+          key={student._id}
+          title={student.name}
+          onClick={this.goToStudent(student._id)}
+          actionIcon={<svg xmlns="http://www.w3.org/2000/svg" width="24"
+            height="24" viewBox="0 0 24 24">
+            <circle fill={student.evaluations[student.evaluations.length-1].color}
+            cx="12" cy="12" r="8"/>
+            </svg>}
+          >
+          <img className="studentImage" src={student.photo} alt="student"
+            onClick={this.goToStudent(student._id)}/>
         </GridTile>
     ))}
   </GridList>

@@ -22,21 +22,20 @@ const styles = {
   titleStyle: {
   color: 'black',
   fontSize: '30px',
-},
-subtitleStyle: {
-color: 'black',
-},
+ },
+  subtitleStyle: {
+  color: 'black',
+ },
 };
 
 class BatchesContainer extends PureComponent {
   static propTypes = {
   signedIn: PropTypes.bool,
-}
-  componentWillMount() {
-    this.props.fetchBatches()
-  }
+ }
 
- goToBatch = batchId => event => this.props.push(`/batches/${batchId}`)
+  componentWillMount() { this.props.fetchBatches() }
+
+  goToBatch = batchId => event => this.props.push(`/batches/${batchId}`)
 
   render() {
     if (!this.props.signedIn) return <SignIn />
@@ -47,15 +46,15 @@ class BatchesContainer extends PureComponent {
          cellHeight={100}
          style={styles.gridList}
         >
-     {this.props.batches.map((batch) => (
-       <GridTile
-         className= "gridTile"
-         key={batch._id}
-         title= {"Batch  #" + batch.batchNumber}
-         titleStyle={styles.titleStyle}
-         subtitle={<span>{batch.startDate + " ~ " + batch.endDate}</span>}
-         subtitleStyle={styles.subtitleStyle}
-         onClick={this.goToBatch(batch._id)}
+       {this.props.batches.map((batch) => (
+        <GridTile
+          className= "gridTile"
+          key={batch._id}
+          title= {"Batch  #" + batch.batchNumber}
+          titleStyle={styles.titleStyle}
+          subtitle={<span>{batch.startDate + " ~ " + batch.endDate}</span>}
+          subtitleStyle={styles.subtitleStyle}
+          onClick={this.goToBatch(batch._id)}
           titleBackground="rgba(179,229,252,0.5) "
         >
        </GridTile>
@@ -67,7 +66,8 @@ class BatchesContainer extends PureComponent {
   }
 }
 
-const mapStateToProps = ({ batches, currentUser }) => ({ batches, signedIn: !!currentUser && !!currentUser._id, })
+const mapStateToProps = ({ batches, currentUser }) => ({ batches,
+  signedIn: !!currentUser && !!currentUser._id, })
 const mapDispatchToProps = { fetchBatches, push }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BatchesContainer)

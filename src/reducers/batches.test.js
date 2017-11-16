@@ -3,7 +3,7 @@ import batches from './batches'
 import { FETCHED_BATCHES} from '../actions/batches/fetch'
 
 describe('batches reducer', () => {
-  const reducer = classes
+  const reducer = batches
   const initialState = []
 
   it('returns an empty array for the initial state', () => {
@@ -19,5 +19,5 @@ describe('batches reducer', () => {
   }
 
   expect(reducer(initialState, fetchAction)).to.eql(eventualState)
-})
+ })
 })

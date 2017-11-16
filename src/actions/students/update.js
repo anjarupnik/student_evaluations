@@ -19,12 +19,11 @@ export default (student, studentId) => {
         dispatch({ type: APP_DONE_LOADING })
         dispatch({ type: LOAD_SUCCESS })
 
-
         dispatch({
           type: UPDATE_STUDENT,
           payload: res.body
+        })
       })
-  })
       .catch((error) => {
         dispatch({ type: APP_DONE_LOADING })
         dispatch({
@@ -32,5 +31,5 @@ export default (student, studentId) => {
           payload: error.message
         })
       })
-}
+  }
 }
