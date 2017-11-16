@@ -1,0 +1,40 @@
+div.green1 {
+  height: 40px;
+  width: 40px;
+  border: 1 solid black;
+  background-color: green;
+  margin-right: 30px;
+}
+
+div.yellow1 {
+  height: 40px;
+  width: 40px;
+  border: 1 solid black;
+  background-color: yellow;
+  margin-right: 30px;
+}
+
+div.red1 {
+  height: 40px;
+  width: 40px;
+  border: 1 solid black;
+  background-color: red;
+  margin-right: 10px;
+}
+
+div.colors {
+  display: flex;
+
+}
+
+.yellowPerc {
+  margin-right: 20px;
+}
+
+.greenPerc {
+  margin-right: 20px;
+}
+
+.redPerc {
+  margin-right: 20px;
+}
