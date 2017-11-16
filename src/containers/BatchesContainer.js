@@ -19,6 +19,13 @@ const styles = {
     width: 800,
     height: 450,
   },
+  titleStyle: {
+  color: 'black',
+  fontSize: '30px',
+},
+subtitleStyle: {
+color: 'black',
+},
 };
 
 class BatchesContainer extends PureComponent {
@@ -40,14 +47,16 @@ class BatchesContainer extends PureComponent {
          cellHeight={100}
          style={styles.gridList}
         >
-     <Subheader>All Classes</Subheader>
      {this.props.batches.map((batch) => (
        <GridTile
          className= "gridTile"
          key={batch._id}
          title= {"Batch  #" + batch.batchNumber}
+         titleStyle={styles.titleStyle}
          subtitle={<span>{batch.startDate + " ~ " + batch.endDate}</span>}
+         subtitleStyle={styles.subtitleStyle}
          onClick={this.goToBatch(batch._id)}
+          titleBackground="rgba(179,229,252,0.5) "
         >
        </GridTile>
      ))}
