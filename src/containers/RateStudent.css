@@ -1,21 +1,27 @@
 div.green {
   height: 30px;
   width: 30px;
-  border: 1 solid black;
+  border-width: 0.5px;
+  border-color: black;
+  border-style: solid;
   background-color: green;
 }
 
 div.yellow {
   height: 30px;
   width: 30px;
-  border: 1 solid black;
+  border-width: 0.5px;
+  border-color: black;
+  border-style: solid;
   background-color: yellow;
 }
 
 div.red {
   height: 30px;
   width: 30px;
-  border: 1 solid black;
+  border-width: 0.5px;
+  border-color: black;
+  border-style: solid;;
   background-color: red;
 }
 

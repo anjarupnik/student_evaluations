@@ -14,8 +14,7 @@ const dialogStyle = {
 }
 
 const buttonStyle = {
-  float: 'right',
-  marginLeft: '2rem',
+  marginLeft: '4rem',
 }
 
 class StudentForm extends PureComponent {
