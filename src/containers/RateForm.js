@@ -6,16 +6,14 @@ import Title from '../components/ui/Title'
 import Paper from 'material-ui/Paper'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
-import DropDownMenu from 'material-ui/DropDownMenu';
-import MenuItem from 'material-ui/MenuItem';
 import { push } from 'react-router-redux'
 import './RateForm.css'
 
 const dialogStyle = {
-  width: '400px',
-  margin: '30px',
+  width: '470px',
+  height: '550px',
+  margin: '20px',
   padding: '2rem',
-  flex: '3',
 }
 
 const button1 = {
@@ -48,14 +46,15 @@ class RateForm extends PureComponent {
 
     submitNext(event) {
       event.preventDefault()
-        const { studentId } = this.props
+        const { studentId, batchId } = this.props
          const evaluation = {
           color: this.state.value,
           date: this.refs.date.getValue(),
           remark: this.refs.remark.getValue()
         }
-        this.props.rateStudent(evaluation, studentId)
-        this.props.push(`/students/${studentId}`)
+        this.props.rateStudent(evaluation, studentId, batchId)
+        this.props.push(`/students/${this.props.students[(this.props.students.findIndex(s=>s._id === studentId)+1)%this.props.students.length]._id}`)
+
       }
 
   handleChange = (value) => {
@@ -102,6 +101,6 @@ class RateForm extends PureComponent {
   }
 }
 
-const mapStateToProps = ({ student }) => ({ student })
+const mapStateToProps = ({ students }) => ({ students })
 
 export default connect(mapStateToProps, { rateStudent, push })(RateForm)

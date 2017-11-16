@@ -5,7 +5,6 @@ import { fetchOneBatch } from '../actions/batches/fetch'
 import {GridList, GridTile} from 'material-ui/GridList';
 import StudentForm from './StudentForm'
 import { push } from 'react-router-redux'
-import Title from '../components/ui/Title'
 import './Batch.css'
 import { askQuestion } from '../actions/batches'
 import RaisedButton from 'material-ui/RaisedButton'
