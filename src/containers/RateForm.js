@@ -46,20 +46,19 @@ class RateForm extends PureComponent {
 
     submitNext(event) {
       event.preventDefault()
-        const { studentId, batchId } = this.props
-         const evaluation = {
-          color: this.state.value,
-          date: this.refs.date.getValue(),
-          remark: this.refs.remark.getValue()
+      const { studentId, batchId } = this.props
+      const evaluation = {
+        color: this.state.value,
+        date: this.refs.date.getValue(),
+        remark: this.refs.remark.getValue()
         }
-        this.props.rateStudent(evaluation, studentId, batchId)
-        this.props.push(`/students/${this.props.students[(this.props.students.findIndex(s=>s._id === studentId)+1)%this.props.students.length]._id}`)
 
+      this.props.rateStudent(evaluation, studentId, batchId)
+      this.props.push(`/students/${this.props.students[(this.props.students.findIndex(
+        s=>s._id === studentId)+1)%this.props.students.length]._id}`)
       }
 
-  handleChange = (value) => {
-    this.setState({value})
-    }
+  handleChange = (value) => { this.setState({value}) }
 
   render() {
     return (
@@ -77,11 +76,13 @@ class RateForm extends PureComponent {
          <h4>Rate: {this.state.value}</h4>
           <div className="input">
             <h4>Date: </h4>
-            <TextField ref="date" type="date" placeholder='Date' defaultValue={new Date().toISOString().substr(0, 10)} />
+            <TextField ref="date" type="date" placeholder='Date'
+              defaultValue={new Date().toISOString().substr(0, 10)} />
          </div>
         <div className="input">
           <h4>Remarks: </h4>
-          <TextField ref="remark" type="text" placeholder='Remarks'  multiLine={true}
+          <TextField ref="remark" type="text" placeholder='Remarks'
+            multiLine={true}
             rows={2}
             rowsMax={4} />
         </div>

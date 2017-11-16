@@ -10,7 +10,6 @@ import { push } from 'react-router-redux'
 import Drawer from 'material-ui/Drawer';
 import './RateForm.css'
 
-
   const dialogStyle = {
     width: '500px',
     margin: '0px',
@@ -36,30 +35,33 @@ class EditStudent extends PureComponent {
 
     submitForm(event) {
       event.preventDefault()
-        const { student } = this.props
-        const evaluation = {
-         color: this.state.value,
-         date: this.refs.date.getValue(),
-         remark: this.refs.remark.getValue()
+
+      const { student } = this.props
+      const evaluation = {
+        color: this.state.value,
+        date: this.refs.date.getValue(),
+        remark: this.refs.remark.getValue()
        }
+
+      if (evaluation.color != null) {
         var updatedEvaluations = this.props.student.evaluations
-        updatedEvaluations.push(evaluation)
+        updatedEvaluations.push(evaluation)}
+
         const updatedStudent = {
           name: this.refs.name.getValue(),
           photo: this.refs.photo.getValue(),
           evaluations: updatedEvaluations
       }
+
         this.props.updateStudent(updatedStudent, student._id)
         this.props.push(`/students/${student._id}`)
       }
 
-      handleChange = (value) => {
-        this.setState({value})
-        }
+      handleChange = (value) => { this.setState({value}) }
 
     render() {
-    const  { student } = this.props
-     if (!student) return null
+      const  { student } = this.props
+      if (!student) return null
       return (
         <div>
           <Drawer width={600} openSecondary={true} open={this.state.open}>
@@ -76,7 +78,8 @@ class EditStudent extends PureComponent {
               <TextField ref="photo" type="text" placeholder='url' defaultValue={student.photo} />
             </div>
             { this.state.value != null ?
-              <h4>Rate: {this.state.value}</h4> : <h4>Rate: {student.evaluations[student.evaluations.length-1].color}</h4> }
+              <h4>Rate: {this.state.value}</h4> : <h4>Rate:
+                {student.evaluations[student.evaluations.length-1].color}</h4> }
 
             <div className="input">
               <div className="colors" >
@@ -87,11 +90,14 @@ class EditStudent extends PureComponent {
             </div>
              <div className="input">
               <h4>Date: </h4>
-              <TextField ref="date" type="date" placeholder='Date' defaultValue={student.evaluations[student.evaluations.length-1].date}/>
+              <TextField ref="date" type="date" placeholder='Date'
+                defaultValue={student.evaluations[student.evaluations.length-1].date}/>
            </div>
           <div className="input">
             <h4>Remarks: </h4>
-            <TextField ref="remark" type="text" placeholder='Remarks' defaultValue={student.evaluations[student.evaluations.length-1].remark}  multiLine={true}
+            <TextField ref="remark" type="text" placeholder='Remarks'
+              defaultValue={student.evaluations[student.evaluations.length-1].remark}
+              multiLine={true}
               rows={2}
               rowsMax={4} />
           </div>

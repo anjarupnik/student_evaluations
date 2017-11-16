@@ -5,7 +5,6 @@ div.green1 {
   background-color: green;
   margin-right: 10px;
   cursor: pointer;
-
 }
 
 div.yellow1 {
@@ -16,7 +15,6 @@ div.yellow1 {
   margin-right: 10px;
   cursor: pointer;
 }
-
 
 div.red1 {
   height: 40px;
@@ -40,5 +38,4 @@ div.red1 {
 
 div.colors {
   display: flex;
-
 }

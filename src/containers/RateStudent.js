@@ -33,7 +33,7 @@ class RateStudent extends PureComponent {
 
   render() {
     const { student } = this.props
-     if (!student) return null
+    if (!student) return null
     return(
       <div className="studentpage">
         <Card style={containerStyle}>
@@ -49,7 +49,8 @@ class RateStudent extends PureComponent {
             <CardActions>
               <FlatButton label="Edit" onClick={this.editStudent(student._id)} />
               <FlatButton label="Delete" onClick={this.deleteStudent}/>
-              <FlatButton label="Back" onClick={() => this.props.push(`/batches/${student.batchId}`)}/>
+              <FlatButton label="Back"
+                onClick={() => this.props.push(`/batches/${student.batchId}`)}/>
             </CardActions>
         </Card>
         <div>

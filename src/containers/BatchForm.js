@@ -19,9 +19,7 @@ const buttonStyle = {
 }
 
 class BatchForm extends PureComponent {
-  static propTypes = {
-    createBatch: PropTypes.func.isRequired,
-  }
+  static propTypes = { createBatch: PropTypes.func.isRequired }
 
   state = {}
 

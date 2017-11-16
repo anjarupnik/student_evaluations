@@ -9,7 +9,7 @@ import signOut from '../../actions/user/sign-out'
 
 const TITLE = 'Student Evaluations'
 
-class Navigation extends PureComponent {
+export class Navigation extends PureComponent {
   static propTypes = {
     signedIn: PropTypes.bool.isRequired,
     push: PropTypes.func.isRequired,
