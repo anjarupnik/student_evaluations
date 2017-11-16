@@ -12,9 +12,9 @@ import './RateForm.css'
 
 
   const dialogStyle = {
-    width: '300px',
-    margin: '30px',
-    padding: '2rem',
+    width: '500px',
+    margin: '0px',
+    padding: '1rem',
   }
 
   const buttonStyle = {
@@ -47,7 +47,7 @@ class EditStudent extends PureComponent {
         const updatedStudent = {
           name: this.refs.name.getValue(),
           photo: this.refs.photo.getValue(),
-          evaluations: updatedEvaluations 
+          evaluations: updatedEvaluations
       }
         this.props.updateStudent(updatedStudent, student._id)
         this.props.push(`/students/${student._id}`)

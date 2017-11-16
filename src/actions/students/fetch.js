@@ -5,6 +5,7 @@ import {
   LOAD_SUCCESS
 } from '../loading'
 import API from '../../api/client'
+import { fetchOneBatch } from '../batches/fetch'
 
 export const FETCHED_ONE_STUDENT = 'FETCHED_ONE_STUDENT'
 
@@ -23,7 +24,9 @@ export default (studentId) => {
           type: FETCHED_ONE_STUDENT,
           payload: result.body
         })
+        dispatch(fetchOneBatch(result.body.batchId))
       })
+
       .catch((error) => {
         dispatch({ type: APP_DONE_LOADING })
         dispatch({

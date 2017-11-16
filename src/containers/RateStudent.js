@@ -9,6 +9,7 @@ import { push } from 'react-router-redux'
 
 const containerStyle = {
   width: '470px',
+  height: '550px',
   margin: '20px',
   padding: '2rem',
 }
