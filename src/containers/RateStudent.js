@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import { fetchOneStudent } from '../actions/students'
+import { fetchOneStudent, deleteStudent } from '../actions/students'
 import RateForm from './RateForm'
 import './RateStudent.css'
 import RaisedButton from 'material-ui/RaisedButton';
@@ -24,6 +24,11 @@ class RateStudent extends PureComponent {
 
   }
 
+  deleteStudent= () => {
+    const { deleteStudent, student } = this.props
+    deleteStudent(student)
+  }
+
   editStudent = studentId => event => this.props.push(`/students/${studentId}/edit`)
 
   render() {
@@ -43,7 +48,7 @@ class RateStudent extends PureComponent {
             </CardMedia>
             <CardActions>
               <FlatButton label="Edit" onClick={this.editStudent(student._id)} />
-              <FlatButton label="Delete" />
+              <FlatButton label="Delete" onClick={this.deleteStudent}/>
             </CardActions>
         </Card>
         <div>
@@ -62,4 +67,4 @@ const mapStateToProps = ({ students }, { match }) => {
   }
 }
 
-  export default connect(mapStateToProps, { fetchOneStudent, push })(RateStudent)
+  export default connect(mapStateToProps, { fetchOneStudent, deleteStudent, push })(RateStudent)

@@ -7,6 +7,7 @@ import Subheader from 'material-ui/Subheader';
 import SignIn from './SignIn'
 import PropTypes from 'prop-types'
 import BatchForm from './BatchForm'
+import './BatchesContainer.css'
 
 const styles = {
   root: {
@@ -42,6 +43,7 @@ class BatchesContainer extends PureComponent {
      <Subheader>All Classes</Subheader>
      {this.props.batches.map((batch) => (
        <GridTile
+         className= "gridTile"
          key={batch._id}
          title= {"Batch  #" + batch.batchNumber}
          subtitle={<span>{batch.startDate + " ~ " + batch.endDate}</span>}

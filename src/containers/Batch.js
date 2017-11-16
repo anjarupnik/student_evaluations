@@ -7,6 +7,7 @@ import Subheader from 'material-ui/Subheader';
 import StudentForm from './StudentForm'
 import { push } from 'react-router-redux'
 import Title from '../components/ui/Title'
+import './Batch.css'
 
 const styles = {
   root: {
@@ -71,7 +72,7 @@ class Batch extends PureComponent {
               actionIcon={<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                <circle fill={student.evaluations[student.evaluations.length-1].color} cx="12" cy="12" r="8"/></svg>}
             >
-              <img src={student.photo} alt="student"  onClick={this.goToStudent(student._id)}/>
+              <img className="studentImage" src={student.photo} alt="student"  onClick={this.goToStudent(student._id)}/>
         </GridTile>
     ))}
   </GridList>
