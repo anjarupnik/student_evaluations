@@ -9,6 +9,7 @@ import Title from '../components/ui/Title'
 import './Batch.css'
 import { askQuestion } from '../actions/batches'
 import RaisedButton from 'material-ui/RaisedButton'
+import PercentageBar from '../components/PercentageBar'
 
 const styles = {
   root: {
@@ -63,8 +64,8 @@ class Batch extends PureComponent {
     if (!batch) return null
     return(
       <div style={styles.root}>
+        <PercentageBar batch={batch}/>
       <div>
-        <Title content= {"Batch # " + batch.batchNumber} />
           <StudentForm batchId= { batch._id}/>
           <RaisedButton
             label="Ask Question"
