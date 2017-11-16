@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { fetchOneStudent } from '../actions/students'
-import PropTypes from 'prop-types'
 import Title from '../components/ui/Title'
 import Paper from 'material-ui/Paper'
 import TextField from 'material-ui/TextField'
@@ -32,7 +31,7 @@ class EditStudent extends PureComponent {
   }
 
   componentWillMount() {
-    const { student, fetchOneStudent, updateStudent } = this.props
+    const { student, fetchOneStudent } = this.props
     const { studentId } = this.props.match.params
 
     if (!student) { fetchOneStudent(studentId) }

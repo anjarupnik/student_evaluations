@@ -3,8 +3,7 @@ import { connect } from 'react-redux'
 import { fetchOneStudent, deleteStudent } from '../actions/students'
 import RateForm from './RateForm'
 import './RateStudent.css'
-import RaisedButton from 'material-ui/RaisedButton';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import {Card, CardActions, CardMedia, CardTitle } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import { push } from 'react-router-redux'
 
@@ -42,7 +41,7 @@ class RateStudent extends PureComponent {
           >
         <div className="colors">
            {student.evaluations.map(e =>
-            <div className={e.color}></div>)}
+            <div key={e._id}className={e.color}></div>)}
         </div>
           <img src={student.photo} alt="student" />
             </CardMedia>
