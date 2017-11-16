@@ -24,12 +24,6 @@ import './RateForm.css'
 
 class EditStudent extends PureComponent {
 
-  constructor(props) {
-    super(props);
-    this.state = {open: true,
-      value: ""};
-  }
-
   componentWillMount() {
     const { student, fetchOneStudent } = this.props
     const { studentId } = this.props.match.params
@@ -48,18 +42,19 @@ class EditStudent extends PureComponent {
          date: this.refs.date.getValue(),
          remark: this.refs.remark.getValue()
        }
+        var updatedEvaluations = this.props.student.evaluations
+        updatedEvaluations.push(evaluation)
         const updatedStudent = {
           name: this.refs.name.getValue(),
           photo: this.refs.photo.getValue(),
-          evaluation: evaluation
+          evaluations: updatedEvaluations 
       }
-        console.log(updatedStudent)
         this.props.updateStudent(updatedStudent, student._id)
         this.props.push(`/students/${student._id}`)
       }
 
       handleChange = (value) => {
-        this.setState({value: value})
+        this.setState({value})
         }
 
     render() {
@@ -80,14 +75,17 @@ class EditStudent extends PureComponent {
               <h4>Photo: </h4>
               <TextField ref="photo" type="text" placeholder='url' defaultValue={student.photo} />
             </div>
+            { this.state.value != null ?
+              <h4>Rate: {this.state.value}</h4> : <h4>Rate: {student.evaluations[student.evaluations.length-1].color}</h4> }
+
             <div className="input">
               <div className="colors" >
-                <div className="green1" primaryText="Green" onClick={this.handleChange("green")}></div>
-                <div className="yellow1" value={"yellow"} primaryText="Yellow" onClick={this.handleChange("yellow")}></div>
-                <div className="red1" value={"red"} primaryText="Red" onClick={this.handleChange("red")}></div>
+                <div className="green1" onClick={()=>this.handleChange("green")}></div>
+                <div className="yellow1" onClick={()=>this.handleChange("yellow")}></div>
+                <div className="red1" onClick={()=>this.handleChange("red")}></div>
               </div>
             </div>
-            <div className="input">
+             <div className="input">
               <h4>Date: </h4>
               <TextField ref="date" type="date" placeholder='Date' defaultValue={student.evaluations[student.evaluations.length-1].date}/>
            </div>

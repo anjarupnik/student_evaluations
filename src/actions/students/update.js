@@ -14,7 +14,7 @@ export default (student, studentId) => {
   return dispatch => {
     dispatch({ type: APP_LOADING })
 
-    api.put(`/students/${studentId}`, student )
+    api.put(`/students/${studentId}`, student  )
       .then((res) => {
         dispatch({ type: APP_DONE_LOADING })
         dispatch({ type: LOAD_SUCCESS })

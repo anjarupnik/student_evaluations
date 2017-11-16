@@ -15,6 +15,7 @@ const dialogStyle = {
   width: '400px',
   margin: '30px',
   padding: '2rem',
+  flex: '3',
 }
 
 const button1 = {
@@ -53,14 +54,11 @@ class RateForm extends PureComponent {
           date: this.refs.date.getValue(),
           remark: this.refs.remark.getValue()
         }
-        console.log(this.state.value)
         this.props.rateStudent(evaluation, studentId)
         this.props.push(`/students/${studentId}`)
       }
 
-
-
-  handleChange = (event, index, value) => {
+  handleChange = (value) => {
     this.setState({value})
     }
 
@@ -71,13 +69,13 @@ class RateForm extends PureComponent {
 
         <form onSubmit={this.submitForm.bind(this)} ref="form">
         <div className="input">
-          <DropDownMenu ref="color" value={this.state.value} onChange={this.handleChange}>
-               <MenuItem value={"green"} primaryText="Green" />
-               <MenuItem value={"yellow"} primaryText="Yellow" />
-               <MenuItem value={"red"} primaryText="Red" />
-         </DropDownMenu>
+          <div className="colors" >
+            <div className="green1" onClick={()=>this.handleChange("green")}></div>
+            <div className="yellow1" onClick={()=>this.handleChange("yellow")}></div>
+            <div className="red1" onClick={()=>this.handleChange("red")}></div>
+          </div>
         </div>
-
+         <h4>Rate: {this.state.value}</h4>
           <div className="input">
             <h4>Date: </h4>
             <TextField ref="date" type="date" placeholder='Date' defaultValue={new Date().toISOString().substr(0, 10)} />

@@ -43,17 +43,18 @@ class RateStudent extends PureComponent {
            {student.evaluations.map(e =>
             <div key={e._id}className={e.color}></div>)}
         </div>
-          <img src={student.photo} alt="student" />
+          <img className="studentImage" src={student.photo} alt="student" />
             </CardMedia>
             <CardActions>
               <FlatButton label="Edit" onClick={this.editStudent(student._id)} />
               <FlatButton label="Delete" onClick={this.deleteStudent}/>
+              <FlatButton label="Back" onClick={() => this.props.push(`/batches/${student.batchId}`)}/>
             </CardActions>
         </Card>
         <div>
           <RateForm studentId={student._id} batchId={student.batchId}/>
         </div>
-       </div>
+      </div>
     )
   }
 }

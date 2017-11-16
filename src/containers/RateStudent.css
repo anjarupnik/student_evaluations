@@ -26,4 +26,14 @@ div.colors {
 .studentpage {
   display: flex;
   justify-content: space-around;
+  overflow: auto;
+}
+
+.studentImage {
+  height: 400px;
+}
+
+.back {
+  height: 30px;
+  align-self: flex-end;
 }
