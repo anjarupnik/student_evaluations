@@ -10,6 +10,7 @@ class PercentageBar extends PureComponent {
       title={"Batch # " + batch.batchNumber}
       style={{backgroundColor: 'grey50'}}
       iconElementRight={
+      batch.students.length > 0 && (
       <div className="colors" >
         <div className="green1" ></div>
         <h5 className="greenPerc">{Math.round(((batch.students.filter(student =>
@@ -20,7 +21,7 @@ class PercentageBar extends PureComponent {
         <div className="red1"></div>
         <h5 className="redPerc">{Math.round(((batch.students.filter(student =>
           student.evaluations[student.evaluations.length-1].color === "red").length)/batch.students.length * 100)*100)/100 + "%"}</h5>
-      </div>}
+      </div>)}
       />
     )
   }
