@@ -71,11 +71,13 @@ class EditStudent extends PureComponent {
           <form onSubmit={this.submitForm.bind(this)} ref="form">
             <div className="input">
               <h4>Full name: </h4>
-              <TextField ref="name" type="text" defaultValue={student.name} />
+              <TextField ref="name" type="text" defaultValue={student.name}
+                id="studName"/>
             </div>
             <div className="input">
               <h4>Photo: </h4>
-              <TextField ref="photo" type="text" placeholder='url' defaultValue={student.photo} />
+              <TextField ref="photo" type="text" placeholder='url' id="studPhoto"
+                defaultValue={student.photo} />
             </div>
             { this.state.value != null ?
               <h4>Rate: {this.state.value}</h4> : <h4>Rate:
@@ -90,12 +92,12 @@ class EditStudent extends PureComponent {
             </div>
              <div className="input">
               <h4>Date: </h4>
-              <TextField ref="date" type="date" placeholder='Date'
+              <TextField ref="date" type="date" placeholder='Date' id="datePick"
                 defaultValue={student.evaluations[student.evaluations.length-1].date}/>
            </div>
           <div className="input">
             <h4>Remarks: </h4>
-            <TextField ref="remark" type="text" placeholder='Remarks'
+            <TextField ref="remark" type="text" placeholder='Remarks' id="remarks"
               defaultValue={student.evaluations[student.evaluations.length-1].remark}
               multiLine={true}
               rows={2}

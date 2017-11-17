@@ -46,11 +46,11 @@ class StudentForm extends PureComponent {
         <form onSubmit={this.submitForm.bind(this)} ref="form">
           <div className="input">
             <h4>Full name: </h4>
-            <TextField ref="name" type="text" placeholder="Student Name" />
+            <TextField ref="name" type="text" placeholder="Student Name" id="name"/>
           </div>
           <div className="input">
             <h4>Photo: </h4>
-            <TextField ref="photo" type="text" placeholder='url' />
+            <TextField ref="photo" type="text" placeholder='url' id="photo"/>
          </div>
         </form>
         <RaisedButton

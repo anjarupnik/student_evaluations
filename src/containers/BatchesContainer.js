@@ -3,7 +3,6 @@ import { fetchBatches } from '../actions/batches'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import {GridList, GridTile} from 'material-ui/GridList';
-import Subheader from 'material-ui/Subheader';
 import SignIn from './SignIn'
 import PropTypes from 'prop-types'
 import BatchForm from './BatchForm'
@@ -28,7 +27,7 @@ const styles = {
  },
 };
 
-class BatchesContainer extends PureComponent {
+export class BatchesContainer extends PureComponent {
   static propTypes = {
   signedIn: PropTypes.bool,
  }

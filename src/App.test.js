@@ -6,7 +6,7 @@ import store from './store'
 
 describe('<App />', () => {
   it('renders without errors', () => {
-    const div = document.createElement('div');
+  const div = document.createElement('div');
     render(
       <Provider store={store}>
         <App />

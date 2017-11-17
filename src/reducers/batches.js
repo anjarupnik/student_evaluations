@@ -1,5 +1,4 @@
-import { FETCHED_BATCHES, FETCHED_ONE_BATCH } from '../actions/batches'
-import { CREATE_BATCH } from '../actions/batches'
+import { FETCHED_BATCHES, FETCHED_ONE_BATCH, CREATE_BATCH } from '../actions/batches'
 
 export default (state = [], { type, payload } = {}) => {
   switch(type) {
