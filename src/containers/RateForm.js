@@ -76,12 +76,13 @@ class RateForm extends PureComponent {
          <h4>Rate: {this.state.value}</h4>
           <div className="input">
             <h4>Date: </h4>
-            <TextField ref="date" type="date" placeholder='Date'
+            <TextField ref="date" type="date" placeholder='Date' id="pickDate"
               defaultValue={new Date().toISOString().substr(0, 10)} />
          </div>
         <div className="input">
           <h4>Remarks: </h4>
           <TextField ref="remark" type="text" placeholder='Remarks'
+            id="remark"
             multiLine={true}
             rows={2}
             rowsMax={4} />

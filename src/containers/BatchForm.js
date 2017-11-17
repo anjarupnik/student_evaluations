@@ -41,15 +41,15 @@ class BatchForm extends PureComponent {
 
         <form onSubmit={this.submitForm.bind(this)} ref="form">
           <div className="input">
-            <TextField ref="batchNumber" type="number" placeholder="Batch Number #" />
+            <TextField ref="batchNumber" type="number" placeholder="Batch Number #" id="batchNumber"/>
           </div>
           <div className="input">
             <h4>Start Date: </h4>
-            <TextField ref="startDate" type="date"   />
+            <TextField ref="startDate" type="date" id="startDate"  />
           </div>
           <div className="input">
             <h4>End Date: </h4>
-            <TextField ref="endDate" type="date"   />
+            <TextField ref="endDate" type="date"  id="endDate" />
           </div>
         </form>
         <RaisedButton
