@@ -32,7 +32,7 @@ const studentShape = PropTypes.shape({
   batchId: PropTypes.string.isRequired
 })
 
-class Batch extends PureComponent {
+export class Batch extends PureComponent {
   static propTypes = {
     fetchOneBatch: PropTypes.func.isRequired,
     batch: PropTypes.shape({
