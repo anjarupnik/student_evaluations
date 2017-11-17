@@ -18,7 +18,7 @@ const buttonStyle = {
   marginLeft: '2rem',
 }
 
-class BatchForm extends PureComponent {
+export class BatchForm extends PureComponent {
   static propTypes = { createBatch: PropTypes.func.isRequired }
 
   state = {}

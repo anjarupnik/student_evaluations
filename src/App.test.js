@@ -1,17 +1,16 @@
 import React from 'react'
-import { render } from 'react-dom'
+import chai, { expect } from 'chai'
+import { shallow } from 'enzyme'
+import chaiEnzyme from 'chai-enzyme'
 import App from './App'
-import { Provider } from 'react-redux'
-import store from './store'
+import Navigation from './components/ui/Navigation'
+
+chai.use(chaiEnzyme())
 
 describe('<App />', () => {
-  it('renders without errors', () => {
-  const div = document.createElement('div');
-    render(
-      <Provider store={store}>
-        <App />
-      </Provider>,
-      div
-    )
+  const app = shallow(<App />)
+
+  it('contains navigation', () => {
+    expect(app).to.have.descendants(Navigation)
   })
 })
