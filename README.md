@@ -1,6 +1,7 @@
 # Student Evaluations
 
 Individual assignment at Codaisseur Academy.
+
 React App for evaluating students. As user, you can add new classes,
 new students, rate students for each day and ask random student a questions.
 
