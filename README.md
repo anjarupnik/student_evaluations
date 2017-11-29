@@ -13,27 +13,12 @@ YELLOW students ~33%, and GREEN students ~17%.).
 
 ## Getting Started
 
+Make sure you have [NodeJS](https://nodejs.org/en/) and [Yarn](https://yarnpkg.com/lang/en/) installed.
+Don't forget to run [student_api](https://github.com/anjarupnik/student_api) as well.
+
 ```bash
-Back-end
-git clone git@github.com:anjarupnik/student_api.git
-cd student-api
-yarn install
-yarn start
-Front-end
 git clone git@github.com:anjarupnik/student_evaluations.git
 cd student_evaluations
 yarn install
 yarn start
 ```
-
-## Steps
-
-These are the steps I followed when working on this app:
-
-1. Setting Up Project
-2. Setting Up API and databse(for more information see: https://github.com/anjarupnik/student_api)
-3. Created algorithm for asking questions
-4. Made Sign In and Sign Up forms
-5. Built home page with all classes and form for adding new classes
-6. Built single class page with pictures of all the students and form for adding
-   new ones and Ask Question button
