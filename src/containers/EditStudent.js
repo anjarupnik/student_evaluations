@@ -72,7 +72,7 @@ class EditStudent extends PureComponent {
             <div className="input">
               <h4>Full name: </h4>
               <TextField ref="name" type="text" defaultValue={student.name}
-                id="studName"/>
+                id="studName" />
             </div>
             <div className="input">
               <h4>Photo: </h4>

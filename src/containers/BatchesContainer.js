@@ -32,7 +32,7 @@ export class BatchesContainer extends PureComponent {
   signedIn: PropTypes.bool,
  }
 
-  componentWillMount() { this.props.fetchBatches() }
+    componentWillMount() { this.props.fetchBatches() }
 
   goToBatch = batchId => event => this.props.push(`/batches/${batchId}`)
 
