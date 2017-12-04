@@ -22,3 +22,4 @@ cd student_evaluations
 yarn install
 yarn start
 ```
+
